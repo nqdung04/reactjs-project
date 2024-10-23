@@ -7,6 +7,7 @@ const Menu = () => {
   const [showTeamDropdown, setShowTeamDropdown] = useState(false);
 
   const handleLogout = () => {
+    //Đăng xuất
     navigate('/login');
   };
 
