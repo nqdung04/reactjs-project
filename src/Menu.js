@@ -14,12 +14,14 @@ const Menu = () => {
       {/* Menu bên trái */}
       <div style={styles.menu}>
         <ul style={styles.menuList}>
+          <li><h3>General</h3></li>
           <li style={styles.menuItem}>
             <NavLink 
               to="todo-app" 
               style={({ isActive }) => ({ 
                 ...styles.link, 
-                backgroundColor: isActive ? '#007BFF' : 'transparent' 
+                color: isActive ? '#4B0082' : 'black', // Chữ tím đậm khi được chọn
+                backgroundColor: isActive ? '#E0BBE4' : 'transparent'
               })}
             >
               Todo App
@@ -30,7 +32,8 @@ const Menu = () => {
               to="user" 
               style={({ isActive }) => ({ 
                 ...styles.link, 
-                backgroundColor: isActive ? '#007BFF' : 'transparent' 
+                color: isActive ? 'purple' : 'black', // Chữ tím đậm khi được chọn
+                backgroundColor: isActive ? '#E0BBE4' : 'transparent'
               })} 
             >
               User
@@ -41,7 +44,8 @@ const Menu = () => {
               to="files" 
               style={({ isActive }) => ({ 
                 ...styles.link, 
-                backgroundColor: isActive ? '#007BFF' : 'transparent' 
+                color: isActive ? '#4B0082' : 'black', // Chữ tím đậm khi được chọn
+                backgroundColor: isActive ? '#E0BBE4' : 'transparent'
               })} 
             >
               Files
@@ -68,7 +72,7 @@ const styles = {
   },
   menu: {
     width: '200px',
-    backgroundColor: '#000', // Nền đen
+    backgroundColor: '#FFF',
     padding: '20px',
     boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)',
   },
@@ -80,35 +84,12 @@ const styles = {
     margin: '10px 0',
   },
   link: {
-    color: 'white', // Chữ trắng
+    color: 'black',
     textDecoration: 'none',
     padding: '10px',
     display: 'block',
-    transition: 'background-color 0.3s', // Hiệu ứng chuyển màu
-  },
-  teamLink: {
-    color: 'white',
-    textDecoration: 'none',
-    padding: '10px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  },
-  dropdownArrow: {
-    marginLeft: '5px', // Khoảng cách giữa chữ "Team" và mũi tên
-  },
-  dropdownList: {
-    listStyleType: 'none',
-    padding: '0',
-    margin: '10px 0 0 0',
-    backgroundColor: '#1a1a1a', // Nền cho dropdown
-    borderRadius: '5px',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-  },
-  dropdownItem: {
-    margin: '0',
+    transition: 'background-color 0.3s, color 0.3s', // Hiệu ứng chuyển màu
+    borderRadius: '5px', // Bo góc nhẹ
   },
   logoutButton: {
     backgroundColor: '#f44336',
@@ -121,6 +102,7 @@ const styles = {
   content: {
     flex: 1,
     padding: '20px',
+    backgroundColor: '#f9f9f9', //nền các trang màu xám
   },
 };
 

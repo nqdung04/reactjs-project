@@ -28,56 +28,62 @@ const User = () => {
     }
 
     return (
-        <div style={styles.container}>
-            {/* Khung chứa ảnh và email */}
-            <div style={styles.topSection}>
-                <img src={userData.avatar} alt="Avatar" style={styles.avatar} />
-                <h2 style={{ color: 'purple', fontWeight: 'bold', margin: '10px 0' }}>
-                    {email}
-                </h2>
-                <p style={{ margin: '5px 0' }}>
-                    {userData.email}
-                </p>
+        <div style={styles.mainContainer}>
+            {/* Khung chứa hai khung nhỏ */}
+            <div style={styles.sideContainer}>
+                {/* Khung chứa ảnh và email */}
+                <div style={styles.topSection}>
+                    <img src={userData.avatar} alt="Avatar" style={styles.avatar} />
+                    <h2 style={{ color: 'purple', fontWeight: 'bold', margin: '10px 0' }}>
+                        {email}
+                    </h2>
+                    <p style={{ margin: '5px 0' }}>
+                        {userData.email}
+                    </p>
+                </div>
+
+                {/* Khung chứa các thông tin cá nhân */}
+                <div style={styles.infoSection}>
+                    <h2>Information</h2>
+                    <p><strong>Họ tên:</strong> {userData.name}</p>
+                    <p><strong>Email:</strong> {userData.email}</p>
+                    <p><strong>Số điện thoại:</strong> {userData.phone}</p>
+                    <p><strong>Địa chỉ:</strong> {userData.address}</p>
+                    <p><strong>Website:</strong> {userData.website}</p>
+                    <p><strong>Công ty:</strong> {userData.company}</p>
+                    {message && <p style={styles.message}>{message}</p>}
+                    <Link to="user-settings">Chỉnh sửa thông tin cá nhân</Link>
+                </div>
             </div>
 
-            {/* Khung chứa các thông tin cá nhân */}
-            <div style={styles.infoSection}>
-                <h2>Information</h2>
-                <p><strong>Họ tên:</strong> {userData.name}</p>
-                <p><strong>Email:</strong> {userData.email}</p>
-                <p><strong>Số điện thoại:</strong> {userData.phone}</p>
-                <p><strong>Địa chỉ:</strong> {userData.address}</p>
-                <p><strong>Website:</strong> {userData.website}</p>
-                <p><strong>Công ty:</strong> {userData.company}</p>
-                {message && <p style={styles.message}>{message}</p>}
-                {/* Nút chỉnh sửa thông tin cá nhân */}
-                <Link to="user-settings">
-                    Chỉnh sửa thông tin cá nhân
-                </Link>
-            </div>
+            {/* Khung trống lớn nằm cạnh */}
+            <div style={styles.largeSection}></div>
         </div>
     );
 };
 
 const styles = {
-    container: {
+    mainContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
         padding: '20px',
-        width: '350px',
-        height: '95%',
+        gap: '20px',
+    },
+    sideContainer: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        gap: '20px', // Tạo khoảng cách giữa các khung
+        gap: '20px',
+        width: '350px',
     },
     topSection: {
         padding: '20px',
         border: '1px solid #ccc',
-        borderRadius: '5px',
-        backgroundColor: '#f9f9f9',
+        borderRadius: '10px',
+        backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '100%',
     },
     avatar: {
         width: '100px',
@@ -88,11 +94,17 @@ const styles = {
     infoSection: {
         padding: '20px',
         border: '1px solid #ccc',
-        borderRadius: '5px',
-        backgroundColor: '#f9f9f9',
-        width: '100%',
-        height: '70%',
+        borderRadius: '10px',
+        backgroundColor: 'white',
         textAlign: 'left',
+    },
+    largeSection: {
+        flex: 1,
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        backgroundColor: 'white',
+        minHeight: '597px', // Chiều cao tối thiểu của khung lớn
     },
     message: {
         color: 'red',
