@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, Outlet } from 'react-router-dom';
+import React from 'react';
+import { NavLink, useNavigate, Outlet } from 'react-router-dom';
 
 const Menu = () => {
   const navigate = useNavigate();
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const [showTeamDropdown, setShowTeamDropdown] = useState(false);
 
   const handleLogout = () => {
-    //Đăng xuất 
+    // Đăng xuất 
     navigate('/login');
   };
 
@@ -17,52 +15,37 @@ const Menu = () => {
       <div style={styles.menu}>
         <ul style={styles.menuList}>
           <li style={styles.menuItem}>
-            <Link 
+            <NavLink 
               to="todo-app" 
-              style={{ ...styles.link, backgroundColor: hoveredLink === 'todo' ? '#007BFF' : 'transparent' }} 
-              onMouseEnter={() => setHoveredLink('todo')}
-              onMouseLeave={() => setHoveredLink(null)}
+              style={({ isActive }) => ({ 
+                ...styles.link, 
+                backgroundColor: isActive ? '#007BFF' : 'transparent' 
+              })}
             >
               Todo App
-            </Link>
+            </NavLink>
           </li>
           <li style={styles.menuItem}>
-            <Link 
+            <NavLink 
               to="user" 
-              style={{ ...styles.link, backgroundColor: hoveredLink === 'user' ? '#007BFF' : 'transparent' }} 
-              onMouseEnter={() => setHoveredLink('user')}
-              onMouseLeave={() => setHoveredLink(null)}
+              style={({ isActive }) => ({ 
+                ...styles.link, 
+                backgroundColor: isActive ? '#007BFF' : 'transparent' 
+              })} 
             >
               User
-            </Link>
+            </NavLink>
           </li>
           <li style={styles.menuItem}>
-            <div 
-              style={styles.teamLink} 
-              onClick={() => setShowTeamDropdown(!showTeamDropdown)} 
-              onMouseEnter={() => setHoveredLink('team')}
-              onMouseLeave={() => setHoveredLink(null)}
-            >
-              Team
-              <span style={styles.dropdownArrow}> ▼</span>
-            </div>
-            {showTeamDropdown && (
-              <ul style={styles.dropdownList}>
-                <li style={styles.dropdownItem}>
-                  <Link to="team" style={styles.link}>View Teams</Link>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li style={styles.menuItem}>
-            <Link 
+            <NavLink 
               to="files" 
-              style={{ ...styles.link, backgroundColor: hoveredLink === 'files' ? '#007BFF' : 'transparent' }} 
-              onMouseEnter={() => setHoveredLink('files')}
-              onMouseLeave={() => setHoveredLink(null)}
+              style={({ isActive }) => ({ 
+                ...styles.link, 
+                backgroundColor: isActive ? '#007BFF' : 'transparent' 
+              })} 
             >
               Files
-            </Link>
+            </NavLink>
           </li>
           <li style={styles.menuItem}>
             <button onClick={handleLogout} style={styles.logoutButton}>Logout</button>

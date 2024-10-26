@@ -8,7 +8,7 @@ import Register from './Register';
 import Menu from './Menu';
 import User from './User';
 import Files from './Files';
-import Team from './Team';
+import UserSettings from './UserSettings';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -37,8 +37,8 @@ function App() {
             <Route path="todo-app" element={<TodoApp todos={todos} setTodos={setTodos} setTodoEdit={setTodoEdit} />} />
             <Route path="todo-app/edit/:id" element={<TodoEdit todos={todos} setTodos={setTodos} todoEdit={todoEdit} />} />
             <Route path="user" element={<User />} />
+            <Route path="user/user-settings" element={<UserSettings />} />
             <Route path="files" element={<Files />} />
-            <Route path="team" element={<Team />} />
           </Route>
           <Route path="/" element={
             <>
