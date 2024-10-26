@@ -32,7 +32,12 @@ const User = () => {
             {/* Khung chứa ảnh và email */}
             <div style={styles.topSection}>
                 <img src={userData.avatar} alt="Avatar" style={styles.avatar} />
-                <p>{email}</p>
+                <h2 style={{ color: 'purple', fontWeight: 'bold', margin: '10px 0' }}>
+                    {email}
+                </h2>
+                <p style={{ margin: '5px 0' }}>
+                    {userData.email}
+                </p>
             </div>
 
             {/* Khung chứa các thông tin cá nhân */}
