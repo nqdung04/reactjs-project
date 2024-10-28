@@ -1,5 +1,7 @@
+// User.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import News from './components/News';
 
 const User = () => {
     const email = localStorage.getItem('email');
@@ -29,9 +31,7 @@ const User = () => {
 
     return (
         <div style={styles.mainContainer}>
-            {/* Khung chứa hai khung nhỏ */}
             <div style={styles.sideContainer}>
-                {/* Khung chứa ảnh và email */}
                 <div style={styles.topSection}>
                     <img src={userData.avatar} alt="Avatar" style={styles.avatar} />
                     <h2 style={{ color: 'purple', fontWeight: 'bold', margin: '10px 0' }}>
@@ -42,7 +42,6 @@ const User = () => {
                     </p>
                 </div>
 
-                {/* Khung chứa các thông tin cá nhân */}
                 <div style={styles.infoSection}>
                     <h2>Information</h2>
                     <p><strong>Họ tên:</strong> {userData.name}</p>
@@ -56,8 +55,10 @@ const User = () => {
                 </div>
             </div>
 
-            {/* Khung trống lớn nằm cạnh */}
-            <div style={styles.largeSection}></div>
+            {/* Khung trống lớn nằm cạnh có chứa component News */}
+            <div style={styles.largeSection}>
+                <News /> {/* Chèn nội dung từ News */}
+            </div>
         </div>
     );
 };
@@ -84,6 +85,8 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        boxShadow: '0px 2px 4px 0px #00000030',
+
     },
     avatar: {
         width: '100px',
@@ -97,14 +100,15 @@ const styles = {
         borderRadius: '10px',
         backgroundColor: 'white',
         textAlign: 'left',
+        boxShadow: '0px 2px 4px 0px #00000030',
     },
     largeSection: {
         flex: 1,
-        padding: '20px',
         border: '1px solid #ccc',
         borderRadius: '10px',
         backgroundColor: 'white',
-        minHeight: '597px', // Chiều cao tối thiểu của khung lớn
+        minHeight: '600px', // Chiều cao tối thiểu của khung lớn
+        boxShadow: '0px 2px 4px 0px #00000030',
     },
     message: {
         color: 'red',

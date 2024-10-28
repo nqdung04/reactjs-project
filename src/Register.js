@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import loginImage from './img/ScreenshotLogin.png'; // Import ảnh từ thư mục img
+import loginImage from './img/Container 1.png'; // Import ảnh từ thư mục img
+import './Register.css';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -17,20 +18,18 @@ const Register = () => {
 
         if (password !== confirmPassword) {
             setError('Mật khẩu không khớp!');
-            setSuccess(''); // Xóa thông báo thành công nếu có
+            setSuccess('');
             return;
         }
 
-        // Lưu thông tin đăng ký vào localStorage
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
-        
-        setSuccess('Đăng ký thành công!');
-        setError(''); // Xóa thông báo lỗi khi đăng ký thành công
 
-        // Chuyển hướng sau 1 giây
+        setSuccess('Đăng ký thành công!');
+        setError('');
+
         setTimeout(() => {
-            navigate('/login'); // Chuyển đến trang đăng nhập
+            navigate('/login');
         }, 1000);
     };
 
@@ -38,9 +37,9 @@ const Register = () => {
         <div style={styles.container}>
             <div style={styles.imageContainer}>
                 <img 
-                    src={loginImage}  // Sử dụng ảnh đã import
-                    alt="Login Illustration" 
-                    className="image" 
+                    src={loginImage}
+                    alt="Login Illustration"
+                    className="image"
                 />
             </div>
             <form onSubmit={handleSubmit} style={styles.form}>
@@ -55,9 +54,9 @@ const Register = () => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder='Nhập Email'
+                            placeholder="Nhập Email"
                             required
-                            style={styles.input}
+                            className="input" // Thêm lớp input
                         />
                     </div>
                 </div>
@@ -69,13 +68,13 @@ const Register = () => {
                             type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder='Nhập mật khẩu'
+                            placeholder="Nhập mật khẩu"
                             required
-                            style={styles.input}
+                            className="input" // Thêm lớp input
                         />
                         <i 
                             className={`fas ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`} 
-                            onClick={() => setShowPassword(!showPassword)} 
+                            onClick={() => setShowPassword(!showPassword)}
                             style={styles.icon}
                         ></i>
                     </div>
@@ -88,20 +87,20 @@ const Register = () => {
                             type={showConfirmPassword ? 'text' : 'password'}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            placeholder='Nhập lại mật khẩu'
+                            placeholder="Nhập lại mật khẩu"
                             required
-                            style={styles.input}
+                            className="input" // Thêm lớp input
                         />
                         <i 
                             className={`fas ${showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'}`} 
-                            onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                             style={styles.icon}
                         ></i>
                     </div>
                 </div>
 
                 <button type="submit" style={styles.button}>Đăng Ký</button>
-                <Link to='/login' style={styles.link}>Hoặc đăng nhập tài khoản</Link>
+                <Link to="/login" style={styles.link}>Hoặc đăng nhập tài khoản</Link>
             </form>
         </div>
     );
@@ -112,7 +111,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         height: '100vh',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: 'white',
     },
     imageContainer: {
         flex: '0 0 auto',
@@ -123,8 +122,9 @@ const styles = {
         width: '26%',
     },
     image: {
-        width: '130%',
+        width: '110%',
         height: 'auto',
+        marginRight: '50%',
     },
     form: {
         display: 'flex',
@@ -132,8 +132,9 @@ const styles = {
         backgroundColor: '#fff',
         padding: '30px',
         borderRadius: '8px',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
         width: '400px',
+        marginLeft: '3%',
     },
     inputGroup: {
         marginBottom: '20px',
@@ -196,8 +197,9 @@ const styles = {
     link: {
         marginTop: '10px',
         textDecoration: 'none',
-        color: '#007BFF',
+        color: '#9095A0',
         fontSize: '14px',
+        textAlign: 'center',
     },
 };
 

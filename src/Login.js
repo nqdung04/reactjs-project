@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css'; // Import file CSS riêng
-import loginImage from './img/ScreenshotLogin.png'; // Import ảnh từ thư mục img
+import loginImage from './img/Container 1.png'; // Import ảnh từ thư mục img
 
 const Login = () => {
     const [email, setEmail] = useState('');
