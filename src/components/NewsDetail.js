@@ -51,11 +51,11 @@ const styles = {
     pageContainer: {
         display: 'flex',
         padding: '20px',
-        backgroundColor: '#f9f9f9',
+        backgroundColor: '#fff',
         minHeight: '100vh',
     },
     container: {
-        width: '70%', // Chiếm 70% màn hình
+        width: '70%',
         padding: '20px',
     },
     newsItem: {
