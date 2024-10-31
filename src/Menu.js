@@ -68,7 +68,7 @@ const Menu = () => {
 const styles = {
   container: {
     display: 'flex',
-    height: '100vh',
+    height: '100%',
   },
   menu: {
     width: '200px',

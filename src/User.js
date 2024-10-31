@@ -1,4 +1,3 @@
-// User.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import News from './components/News';
@@ -9,7 +8,7 @@ const User = () => {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        fetch('/user.json')
+        fetch('https://raw.githubusercontent.com/chienduc91/reactjs-config/refs/heads/main/user.json')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -55,9 +54,8 @@ const User = () => {
                 </div>
             </div>
 
-            {/* Khung trống lớn nằm cạnh có chứa component News */}
             <div style={styles.largeSection}>
-                <News /> {/* Chèn nội dung từ News */}
+                <News />
             </div>
         </div>
     );
@@ -86,7 +84,6 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         boxShadow: '0px 2px 4px 0px #00000030',
-
     },
     avatar: {
         width: '100px',
@@ -107,7 +104,7 @@ const styles = {
         border: '1px solid #ccc',
         borderRadius: '10px',
         backgroundColor: 'white',
-        minHeight: '600px', // Chiều cao tối thiểu của khung lớn
+        minHeight: '600px',
         boxShadow: '0px 2px 4px 0px #00000030',
     },
     message: {

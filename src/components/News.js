@@ -1,5 +1,5 @@
-// News.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
+import { Link } from 'react-router-dom';
 
 const News = () => {
     const [newsData, setNewsData] = useState([]);
@@ -20,8 +20,10 @@ const News = () => {
             <div style={styles.newsList}>
                 {newsData.map((news) => (
                     <div key={news.id} style={styles.newsItem}>
-                        <img src={news.image} alt={news.title} style={styles.image} />
-                        <p style={styles.description}><strong>{news.description}</strong></p>
+                        <Link to={`news/${news.id}`} style={styles.link}>
+                            <img src={news.image} alt={news.title} style={styles.image} />
+                            <p style={styles.description}><strong>{news.description}</strong></p>
+                        </Link>
                     </div>
                 ))}
             </div>
@@ -39,19 +41,26 @@ const styles = {
     },
     newsList: {
         display: 'grid',
-        gridTemplateColumns: '45% 45%', //Tạo 2 cột có kích thước = nhau
+        gridTemplateColumns: 'repeat(2, 1fr)', // Tạo 2 cột có kích thước bằng nhau
+        gap: '20px', // Khoảng cách giữa các item
+        padding: '0 20px', // Thêm khoảng đệm bên trái và bên phải
     },
     newsItem: {
         display: 'flex', // Đặt bố cục ngang cho mỗi item
         alignItems: 'center', // Căn giữa theo trục dọc
         padding: '7px',
         textAlign: 'left',
-        marginLeft: '20px',
+    },
+    link: {
+        display: 'flex',
+        alignItems: 'center',
+        textDecoration: 'none', // Bỏ gạch chân cho đường link
+        color: 'inherit', // Giữ nguyên màu chữ
     },
     image: {
         width: '80px',
         height: 'auto',
-        marginRight: '15px', // Tạo khoảng cách giữa ảnh và mô tả
+        marginRight: '10px', // Tạo khoảng cách giữa ảnh và mô tả
         borderRadius: '10px',
     },
     description: {

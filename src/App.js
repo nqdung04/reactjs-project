@@ -9,6 +9,7 @@ import Menu from './Menu';
 import User from './User';
 import Files from './Files';
 import UserSettings from './UserSettings';
+import NewsDetail from './components/NewsDetail';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -39,6 +40,7 @@ function App() {
             <Route path="user" element={<User />} />
             <Route path="user/user-settings" element={<UserSettings />} />
             <Route path="files" element={<Files />} />
+            <Route path="user/news/:id" element={<NewsDetail />} /> {/* Thêm Route cho NewsDetail */}
           </Route>
           <Route path="/" element={
             <>
