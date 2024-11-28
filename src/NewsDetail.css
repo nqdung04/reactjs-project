@@ -61,3 +61,66 @@
     color: #0056b3;
   }
   
+  /* Form bình luận */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+form textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  resize: none;
+  min-height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #28A745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  border-radius: 5px;
+}
+
+/* Danh sách bình luận */
+.comment-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Ảnh đại diện của người bình luận */
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Nội dung bình luận */
+.comment-text {
+  padding: 10px;
+  border-radius: 5px;
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+/* Thông báo khi không có bình luận */
+.news-detail-container p {
+  font-style: italic;
+  color: #666;
+}

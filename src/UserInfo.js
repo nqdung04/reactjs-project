@@ -30,7 +30,7 @@ const UserInfo = () => {
 
           {/* Thêm nút để chuyển đến trang tin tức */}
           <Link to="/news" style={{ marginTop: '20px', display: 'inline-block' }}>
-            <button>Go to News</button>
+            <button>News</button>
           </Link>
         </>
       ) : (

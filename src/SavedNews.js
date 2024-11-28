@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useNewsStore from './UseNewsStore';
-import './NewsList.css';
 
-const NewsList = () => {
-  const { news, fetchNews } = useNewsStore();
+const SavedNews = () => {
+  const { savedArticles, fetchNews } = useNewsStore();
   const navigate = useNavigate(); // Sử dụng hook navigate của react-router-dom
 
   useEffect(() => {
     fetchNews();
   }, [fetchNews]);
 
+  console.log('--savedArticles--', savedArticles)
   // Hàm xử lý khi người dùng nhấn vào ô tin tức
   const handleNewsClick = (articleId) => {
     navigate(`/news/${articleId}`); // Chuyển hướng đến trang chi tiết bài viết
@@ -27,14 +27,14 @@ const NewsList = () => {
 
       <button
         style={{ marginTop: '20px', display: 'inline-block' }}
-        onClick={() => navigate('/savedNews')} 
+        onClick={() => navigate('/news')} 
       >
-        Trang đã lưu
+        Danh sách News
       </button>
 
-      <h2>Danh sách Tin tức</h2>
+      <h2>Tin tức đã lưu</h2>
       <div className="news-grid">
-        {news.map((article) => (
+        {savedArticles.map((article) => (
           <div
             key={article.id}
             className="news-item"
@@ -57,4 +57,4 @@ const NewsList = () => {
   );
 };
 
-export default NewsList;
+export default SavedNews;

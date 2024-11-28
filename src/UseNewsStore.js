@@ -1,26 +1,53 @@
 import { create } from 'zustand';
 
-const useNewsStore = create((set) => ({
+const useNewsStore = create((set, get) => ({
   news: [],
   savedArticles: [],
 
-  // Lấy dữ liệu tin tức từ API
   fetchNews: async () => {
-    const response = await fetch('https://raw.githubusercontent.com/chienduc91/reactjs-config/refs/heads/main/news.json');
-    const data = await response.json();
-    set({ news: data.data });
+    if (get().news.length === 0) {
+      const response = await fetch('https://raw.githubusercontent.com/chienduc91/reactjs-config/refs/heads/main/news.json');
+      const data = await response.json();
+      set({ news: data.data.map((item) => ({ ...item, likes: 0, comments: [] })) });
+    }
   },
 
-  // Lưu bài viết
-  saveArticle: (articleId) => set((state) => {
-    if (!state.savedArticles.includes(articleId)) {
-      return { savedArticles: [...state.savedArticles, articleId] };
+  saveArticle: (article) => set((state) => {
+    if (!state.savedArticles.some((item) => item.id === article.id)) {
+      return { savedArticles: [...state.savedArticles, article] };
     }
     return state;
   }),
 
-  // Kiểm tra xem bài viết đã được lưu chưa
-  isArticleSaved: (articleId) => (state) => state.savedArticles.includes(articleId)
+  removeArticle: (articleId) => set((state) => ({
+    savedArticles: state.savedArticles.filter((item) => item.id !== articleId),
+  })),
+
+  isArticleSaved: (articleId) => get().savedArticles.some((item) => item.id === articleId),
+
+  likeArticle: (articleId) => set((state) => {
+    const updateLikes = (list) =>
+      list.map((item) => (item.id === articleId ? { ...item, likes: item.likes + 1 } : item));
+
+    return {
+      news: updateLikes(state.news),
+      savedArticles: updateLikes(state.savedArticles),
+    };
+  }),
+
+  addComment: (articleId, comment) => set((state) => {
+    const updateComments = (list) =>
+      list.map((item) =>
+        item.id === articleId
+          ? { ...item, comments: [...item.comments, comment] }
+          : item
+      );
+
+    return {
+      news: updateComments(state.news),
+      savedArticles: updateComments(state.savedArticles),
+    };
+  }),
 }));
 
 export default useNewsStore;
